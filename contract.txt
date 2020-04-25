@@ -1,0 +1,7 @@
+==BUKU==
+-kode_buku 
+-judul_buku 
+-kategori 
+-pengarang 
+-tahun_terbit 
+-gambar_buku 
