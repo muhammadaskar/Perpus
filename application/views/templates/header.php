@@ -29,7 +29,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/style.css">
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/zStyle.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+    <link href="<?= base_url('assets/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -40,7 +41,7 @@
             <a class="navbar-brand" href="">
                 <!-- <img src="{{asset('public/img/logo/Logo Landscape Transparent.png')}}" width="140" heigth="20"> -->
                 <div class="logo">
-                    <a href="index.html">
+                    <a href="<?= base_url() ?>">
                         <img src="<?= base_url('assets/'); ?>img/logo.png" alt="">
                     </a>
                 </div>
@@ -54,10 +55,10 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link ml-3" href="" style="color: #FFF;">Beranda <span class="sr-only">(current)</span></a>
+                        <a class="nav-link ml-3" href="<?= base_url() ?>" style="color: #FFF;">Beranda <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-3" href="#" style="color: #FFF;">Koleksi</a>
+                        <a class="nav-link ml-3" href="<?= base_url('main/koleksi') ?>" style="color: #FFF;">Koleksi</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link ml-3" href="#" style="color: #FFF;">Blog</a>
@@ -65,14 +66,35 @@
                     <li class="nav-item">
                         <a class="nav-link ml-3" href="#" style="color: #FFF;">Tentang Kami</a>
                     </li>
-                    <li class="nav-item">
-                        <a type="button" href="" class="btn btn-danger ml-3">Daftar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a type="button" href="" class="btn btn-warning ml-3">Masuk</a>
-                    </li>
-                </ul>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle pl-5" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #FFF">
+                            <?php
+                            $CI = get_instance();
+                            if ($CI->session->userdata('user')) {
+                                echo $user['nama'];
+
+                            ?>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Edit Profile</a>
+                                    <!-- <a class="dropdown-item" href="#">Buku Yang Dipinjam</a> -->
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">keluar</a>
+                                <?php } else {
+                                echo 'User'; ?>
+
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="<?= base_url('auth') ?>">masuk</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="<?= base_url('auth/register') ?>">daftar</a>
+                                    <?php } ?>
+                        </a>
+
             </div>
+            </li>
+            </ul>
+        </div>
         </div>
     </nav>
     <!-- END NAVBAR -->

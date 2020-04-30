@@ -2,3 +2,25 @@
 	text-decoration: none;
 	color: #fff;
 }
+
+.login .card {
+	margin-bottom: 200px;
+	background-color: #000;
+	opacity: .6;
+}
+
+.login .card h2 {
+	color: aliceblue;
+}
+
+
+/* .card input {
+	background-color: rgb(117, 0, 207);
+} */
+
+
+
+/* .login .card input:focus {
+	color: #fff;
+	background-color: rgb(14, 12, 17);
+} */

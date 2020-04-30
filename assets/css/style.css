@@ -9596,4 +9596,17 @@ h6 {
 	font-size: 12px;
 }
 
-/*# sourceMappingURL=style.css.map */
+.semua {
+	margin-top: 10%;
+	margin-bottom: 25%;
+}
+
+.cari {
+	padding-top: 20%;
+	padding-bottom: 50%;
+}
+
+.cari p {
+	padding-top: 60%;
+
+}

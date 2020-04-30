@@ -1,47 +1,71 @@
-    <!-- slider_area_start -->
+<!-- slider_area_start -->
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash') ?>">
+
     <div class=" slider_area">
         <div class="single_slider  d-flex align-items-center slider_bg_1">
             <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="text-white text-center">Daftar Nama Anggota Kelompok : </h3>
+                    </div>
+                </div>
+                <hr class="bg-white">
+                <div class="row mb-5 pb-5 text-center">
+                    <div class="col-lg-4 askar rellax">
+                        <a href="https://github.com/muhammadaskar">
+                            <h4 class="text-white">1. Muhammad Askar</h4>
+                            <p class="text-white">185150601111002</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4 class="text-white">2. Reyhan Nizar Ramadhan</h4>
+                        <p class="text-white">185150600111013</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4 class="text-white">3. Arsyi Fajri</h4>
+                        <p class="text-white">185150600111006</p>
+                    </div>
+                </div>
                 <div class="row align-items-center justify-content-center">
                     <div class="col-xl-10">
                         <div class="slider_text text-center justify-content-center">
-                            <p> SELAMAT DATANG DI :</p>
-                            <h3>LIBMAX</h3>
-                            <center>
-                                <div class="search_form" style="width: 520px;">
-                                    <form action="#" style="width: 520px;">
-                                        <div class="row align-items-center" style="width: 770px;">
-                                            <div class="col-xl-5 col-md-4">
-                                                <div class="input_field">
-                                                    <input type="text" placeholder="Apa yang kamu cari?">
+                            <p"> SELAMAT DATANG DI :</p>
+                                <h3>LIBMAX</h3>
+                                <center>
+                                    <div class="search_form" style="width: 520px;">
+                                        <form action="<?= base_url('main/cari') ?>" style="width: 520px;" method="POST" autocomplete="off">
+                                            <div class="row align-items-center" style="width: 770px;">
+                                                <div class="col-xl-5 col-md-4">
+                                                    <div class="input_field">
+                                                        <input name="keyword" type="text" placeholder="Apa yang kamu cari?">
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="col-xl-3 col-md-4">
-                                                <div class="button_search">
-                                                    <button class="boxed-btn2" type="submit">Cari</button>
+                                                <div class="col-xl-3 col-md-4">
+                                                    <div class="button_search">
+                                                        <input class="boxed-btn2" type="submit" name="cari" value="cari">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
+                                </center>
+                                <div class="quality">
+                                    <ul>
+                                        <li>
+                                            <button>NOVEL</button>
+                                        </li>
+                                        <li>
+                                            <button>KOMIK</button>
+                                        </li>
+                                        <li>
+                                            <button>KAMUS</button>
+                                        </li>
+                                        <li>
+                                            <button>SAINS</button>
+                                        </li>
+                                    </ul>
                                 </div>
-                            </center>
-                            <div class="quality">
-                                <ul>
-                                    <li>
-                                        <button>NOVEL</button>
-                                    </li>
-                                    <li>
-                                        <button>KOMIK</button>
-                                    </li>
-                                    <li>
-                                        <button>KAMUS</button>
-                                    </li>
-                                    <li>
-                                        <button>SAINS</button>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -50,151 +74,14 @@
     </div>
     <!-- slider_area_end -->
 
-    <!-- <div class="popular_catagory_area">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section_title mb-60 text-center">
-                        <p>Saran Untuk Anda</p>
-                        <h3>
-                            Kategori Paling Populer
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-3 col-md-4 col-lg-3">
-                    <div class="single_catagory">
-                        <div class="thumb">
-                            <img src="<?= base_url('assets/'); ?>img/catagory/1.jpg" alt="">
-                        </div>
-                        <div class="hover_overlay">
-                            <div class="hover_inner">
-                                <a href="">
-                                    <h4>Book1</h4>
-                                </a>
-                                <span><a href="">detail</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-4 col-lg-3">
-                    <div class="single_catagory">
-                        <div class="thumb">
-                            <img src="<?= base_url('assets/'); ?>img/catagory/2.jpg" alt="">
-                        </div>
-                        <div class="hover_overlay">
-                            <div class="hover_inner">
-                                <a href="">
-                                    <h4>Book2</h4>
-                                </a>
-                                <span><a href="">detail</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-4 col-lg-3">
-                    <div class="single_catagory">
-                        <div class="thumb">
-                            <img src="<?= base_url('assets/'); ?>img/catagory/3.jpg" alt="">
-                        </div>
-                        <div class="hover_overlay">
-                            <div class="hover_inner">
-                                <a href="">
-                                    <h4>Book3</h4>
-                                </a>
-                                <span><a href="">detail</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-4 col-lg-3">
-                    <div class="single_catagory">
-                        <div class="thumb">
-                            <img src="<?= base_url('assets/'); ?>img/catagory/4.jpg" alt="">
-                        </div>
-                        <div class="hover_overlay">
-                            <div class="hover_inner">
-                                <a href="">
-                                    <h4>Book4</h4>
-                                </a>
-                                <span><a href="">detail</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-4 col-lg-3">
-                    <div class="single_catagory">
-                        <div class="thumb">
-                            <img src="<?= base_url('assets/'); ?>img/catagory/5.jpg" alt="">
-                        </div>
-                        <div class="hover_overlay">
-                            <div class="hover_inner">
-                                <a href="">
-                                    <h4>Book5</h4>
-                                </a>
-                                <span><a href="">detail</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-4 col-lg-3">
-                    <div class="single_catagory">
-                        <div class="thumb">
-                            <img src="<?= base_url('assets/'); ?>img/catagory/6.jpg" alt="">
-                        </div>
-                        <div class="hover_overlay">
-                            <div class="hover_inner">
-                                <a href="">
-                                    <h4>Book6</h4>
-                                </a>
-                                <span><a href="">detail</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-4 col-lg-3">
-                    <div class="single_catagory">
-                        <div class="thumb">
-                            <img src="<?= base_url('assets/'); ?>img/catagory/7.jpg" alt="">
-                        </div>
-                        <div class="hover_overlay">
-                            <div class="hover_inner">
-                                <a href="">
-                                    <h4>Book7</h4>
-                                </a>
-                                <span><a href="">detail</a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-4 col-lg-3">
-                    <div class="single_catagory">
-                        <div class="thumb">
-                            <img src="<?= base_url('assets/'); ?>img/catagory/8.jpg" alt="">
-                        </div>
-                        <div class="hover_overlay">
-                            <div class="hover_inner">
-                                <a href="">
-                                    <h4>Book8</h4>
-                                </a>
-                                <a href="">Detail</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
     <div class="popular_catagory_area">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title mb-60 text-center">
-                        <p>Saran Untuk Anda</p>
                         <h3>
-                            Kategori Paling Populer
+                            Daftar Buku
                         </h3>
                     </div>
                 </div>
@@ -204,20 +91,25 @@
                     <div class="col-xl-3 col-md-4 col-lg-3">
                         <div class="single_catagory">
                             <div class="thumb">
-                                <img src="<?= base_url('assets/img/catagory/');
-                                            echo $book['gambar_buku']; ?>" alt="">
+                                <img src="<?= base_url('assets/img/buku/');
+                                            echo $book['gambar_buku']; ?>" alt="" style="max-height: 250px">
                             </div>
                             <div class="hover_overlay">
                                 <div class="hover_inner">
                                     <a href="">
                                         <h4><?= $book['judul_buku']; ?></h4>
                                     </a>
-                                    <span><a href="">detail</a></span>
+                                    <span><a href="<?= base_url('main/detail/') . $book['kode_buku'] ?>">detail</a></span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="<?= base_url('main/semua') ?>" class="btn btn-warning text-white">Lihat Semua Buku</a>
+                </div>
             </div>
         </div>
     </div>
@@ -253,13 +145,13 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single_explorer">
                                     <div class="thumb">
-                                        <img src="<?= base_url('assets/img/explorer/');
-                                                    echo $kom['gambar_buku']; ?>" alt="">
+                                        <img src="<?= base_url('assets/img/buku/');
+                                                    echo $kom['gambar_buku']; ?>" alt="" style="max-height: 300px">
                                     </div>
                                     <div class=" explorer_bottom d-flex">
                                         <div class="explorer_info">
-                                            <h3><a href="single_"><?= $kom['judul_buku']; ?></a></h3>
-                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                            <h3><a href="<?= base_url('main/detail/') . $kom['kode_buku'] ?>"><?= $kom['judul_buku']; ?></a></h3>
+                                            <p><?= $kom['pengarang'] ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -274,13 +166,13 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single_explorer">
                                     <div class="thumb">
-                                        <img src="<?= base_url('assets/img/explorer/');
-                                                    echo $nov['gambar_buku']; ?>" alt="">
+                                        <img src="<?= base_url('assets/img/buku/');
+                                                    echo $nov['gambar_buku']; ?>" alt="" style="max-height: 300px">
                                     </div>
                                     <div class="explorer_bottom d-flex">
                                         <div class="explorer_info">
-                                            <h3><a href="single_"><?= $nov['judul_buku']; ?></a></h3>
-                                            <!-- <p><?= $nov['kategori']; ?></p> -->
+                                            <h3><a href="<?= base_url('main/detail/') . $nov['kode_buku'] ?>"><?= $nov['judul_buku']; ?></a></h3>
+                                            <p><?= $nov['pengarang'] ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -295,13 +187,13 @@
                             <div class="col-xl-4 col-lg-4 col-md-4">
                                 <div class="single_explorer">
                                     <div class="thumb">
-                                        <img src="<?= base_url('assets/img/explorer/');
-                                                    echo $kms['gambar_buku']; ?>" alt="">
+                                        <img src="<?= base_url('assets/img/buku/');
+                                                    echo $kms['gambar_buku']; ?>" alt="" style="max-height: 300px">
                                     </div>
                                     <div class="explorer_bottom d-flex">
                                         <div class="explorer_info">
-                                            <h3><a href="single_"><?= $kms['judul_buku'] ?></a></h3>
-                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                            <h3><a href="<?= base_url('main/detail/') . $kms['kode_buku'] ?>"><?= $kms['judul_buku'] ?></a></h3>
+                                            <p><?= $kms['pengarang'] ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -316,13 +208,13 @@
                             <div class="col-xl-4 col-lg-4 col-md-6">
                                 <div class="single_explorer">
                                     <div class="thumb">
-                                        <img src="<?= base_url('assets/img/explorer/');
-                                                    echo $sns['gambar_buku']; ?>" alt="">
+                                        <img src="<?= base_url('assets/img/buku/');
+                                                    echo $sns['gambar_buku']; ?>" alt="" style="max-height: 300px">
                                     </div>
                                     <div class="explorer_bottom d-flex">
                                         <div class="explorer_info">
-                                            <h3><a href="single_"><?= $sns['judul_buku']; ?>/a></h3>
-                                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                            <h3><a href="<?= base_url('main/detail/') . $sns['kode_buku'] ?>"><?= $sns['judul_buku']; ?></a></h3>
+                                            <p><?= $sns['pengarang'] ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -334,119 +226,3 @@
 
         </div>
     </div>
-
-
-    <!-- sprayed_area  -->
-    <!-- <div class="sprayed_area overlay">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="text text-center">
-                        <h3>Sumbangkan bukumu </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                            Reiciendis hic eligendi odio, unde et iusto doloribus tenetur quis dolorem esse,
-                            temporibus,
-                            molestias consequuntur saepe voluptate? Totam dolore eveniet beatae expedita.
-                        </p>
-                        <a href="#" class="boxed-btn2">Upload Bukumu</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!--/ sprayed_area end  -->
-
-    <!-- testimonial_area  -->
-    <!-- <div class="testimonial_area  ">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section_title mb-60 text-center">
-                        <p>Testimonials</p>
-                        <h3>
-                            Tanggapan Mereka
-                        </h3>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="testmonial_active owl-carousel">
-                        <div class="single_carousel">
-                            <div class="single_testmonial text-center">
-                                <div class="quote">
-                                    <img src="<?= base_url('assets/'); ?>img/svg_icon/quote.svg" alt="">
-                                </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quae ab
-                                    molestias
-                                    harum
-                                    <br>
-                                    modi laboriosam eum praesentium magni sit dolore voluptates quia ea
-                                    deleniti
-                                    culpa
-                                    debitis,
-                                    <br>
-                                    ex atque maxime pariatur! </p>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="<?= base_url('assets/'); ?>img/case/testmonial.png" alt="">
-                                    </div>
-                                    <h3>Lorem ipsum</h3>
-                                    <span>Lorem ipsum</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_carousel">
-                            <div class="single_testmonial text-center">
-                                <div class="quote">
-                                    <img src="<?= base_url('assets/'); ?>img/svg_icon/quote.svg" alt="">
-                                </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quae ab
-                                    molestias
-                                    harum
-                                    <br>
-                                    modi laboriosam eum praesentium magni sit dolore voluptates quia ea
-                                    deleniti
-                                    culpa
-                                    debitis,
-                                    <br>
-                                    ex atque maxime pariatur!</p>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="<?= base_url('assets/'); ?>img/case/testmonial.png" alt="">
-                                    </div>
-                                    <h3>Lorem ipsum</h3>
-                                    <span>Lorem ipsum</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single_carousel">
-                            <div class="single_testmonial text-center">
-                                <div class="quote">
-                                    <img src="<?= base_url('assets/'); ?>img/svg_icon/quote.svg" alt="">
-                                </div>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut quae ab
-                                    molestias
-                                    harum
-                                    <br>
-                                    modi laboriosam eum praesentium magni sit dolore voluptates quia ea
-                                    deleniti
-                                    culpa
-                                    debitis,
-                                    <br>
-                                    ex atque maxime pariatur! </p>
-                                <div class="testmonial_author">
-                                    <div class="thumb">
-                                        <img src="<?= base_url('assets/'); ?>img/case/testmonial.png" alt="">
-                                    </div>
-                                    <h3>Lorem ipsum</h3>
-                                    <span>Lorem ipsum</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- /testimonial_area  -->

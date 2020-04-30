@@ -14,3 +14,20 @@ values('A00', 'Berlimpah Rezeki Setelah Menikah', 'novel', 'Askar', '2000', '1.j
     ('A02', 'Cinta Dan Ingata', 'novel', 'Askar', '2000', '3.jpg'),
     ('A03', 'Dewa Basket', 'novel', 'Muhammad Askar', '2002', '4.jpg');
 
+
+create table users(
+    id int not null primary key auto_increment,
+    nama varchar
+(125),
+    email VARCHAR
+(125),
+    password varchar
+(125),
+    is_active int
+(1),
+    image VARCHAR
+(255),
+    date_created TIMESTAMP,
+    date_updated TIMESTAMP
+);
+

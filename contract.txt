@@ -5,3 +5,13 @@
 -pengarang 
 -tahun_terbit 
 -gambar_buku 
+
+==USERS==
+-id
+-nama
+-email
+-password
+-is_active
+-image
+-date_created
+-date_updated
