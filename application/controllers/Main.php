@@ -2,7 +2,7 @@
 /*------------------- ------------------------------
 |       Author : 
         - Muhammad Askar
-        - Last updated : 30 Apr 2020
+        - Last updated : 1 May 2020
         - Location     : Sudiang, Makassar City
 ---------------------------------------------------*/
 class Main extends CI_Controller

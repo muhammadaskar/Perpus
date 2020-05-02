@@ -77,10 +77,10 @@
 
                             ?>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Edit Profile</a>
+                                    <a class="dropdown-item edit-profile" href="#">Edit Profile</a>
                                     <!-- <a class="dropdown-item" href="#">Buku Yang Dipinjam</a> -->
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="<?= base_url('auth/logout') ?>">keluar</a>
+                                    <a class="dropdown-item keluar" href="<?= base_url('auth/logout') ?>">keluar</a>
                                 <?php } else {
                                 echo 'User'; ?>
 

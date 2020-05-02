@@ -12,7 +12,7 @@
                 <hr class="bg-white">
                 <div class="row mb-5 pb-5 text-center">
                     <div class="col-lg-4 askar rellax">
-                        <a href="https://github.com/muhammadaskar">
+                        <a href="https://github.com/muhammadaskar" target="https://github.com/muhammadaskar">
                             <h4 class="text-white">1. Muhammad Askar</h4>
                             <p class="text-white">185150601111002</p>
                         </a>
@@ -96,7 +96,7 @@
                             </div>
                             <div class="hover_overlay">
                                 <div class="hover_inner">
-                                    <a href="">
+                                    <a href="<?= base_url('main/detail/') . $book['kode_buku'] ?>">
                                         <h4><?= $book['judul_buku']; ?></h4>
                                     </a>
                                     <span><a href="<?= base_url('main/detail/') . $book['kode_buku'] ?>">detail</a></span>
@@ -221,6 +221,13 @@
                             </div>
                         <?php endforeach; ?>
                     </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1><a href="https://github.com/muhammadaskar/Perpus" target="https://github.com/muhammadaskar/Perpus"><i class="fab fa-fw fa-github"></i></a></h1>
+                    <a href="https://github.com/muhammadaskar/Perpus" target="https://github.com/muhammadaskar/Perpus">Silahkan Cek Projek di Github</a>
                 </div>
             </div>
 

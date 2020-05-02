@@ -33,7 +33,7 @@
                             <th><?= $p['tanggal_pinjam']; ?></th>
                             <th><?= $p['tanggal_kembali']; ?></th>
                             <td>
-                                <a href="<?= base_url('admin/kirimemail/') . $p['kode_buku'] ?>" class="badge badge-success">kirim email</a>
+                                <a href="<?= base_url('admin/kirimemail/') . $p['kode_buku'] ?>" class="badge badge-success kirim-email" onclick="myFunction()">kirim email</a>
                             </td>
                         </tr>
                 </tbody>

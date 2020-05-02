@@ -1,9 +1,9 @@
-<div class="slider_area login">
+<div class="slider_area">
     <div class="single_slider  d-flex align-items-center slider_bg_login">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="card" style="width: 25rem;">
-                    <h2 class="card-header mx-auto">Register</h2>
+                    <h2 class="card-header mx-auto">Daftar Pengguna</h2>
                     <div class="card-body">
                         <form method="POST" action="<?= base_url('auth/register') ?>">
                             <div class="form-group">
@@ -34,3 +34,15 @@
             </div>
         </div>
     </div>
+
+    <style>
+        .card {
+            margin-bottom: 200px;
+            background-color: #102027;
+        }
+
+        .card h2 {
+
+            color: #FFFFFF;
+        }
+    </style>

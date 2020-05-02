@@ -5,7 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800">Daftar Buku</h1>
     <div class="row">
         <div class="col-lg-11">
-            <a href="<?= base_url('admin/tambahBuku') ?>" class="btn btn-primary mb-2">Tambahkan buku baru</a>
+            <a href="<?= base_url('admin/tambahBuku') ?>" class="btn btn-success mb-2">Tambahkan buku baru</a>
             <?= $this->session->flashdata('message'); ?>
             <table class="table table-hover">
                 <thead>

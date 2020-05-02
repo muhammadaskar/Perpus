@@ -26,3 +26,15 @@
             </div>
         </div>
     </div>
+
+    <style>
+        .card {
+            margin-bottom: 200px;
+            background-color: #102027;
+        }
+
+        .card h2 {
+
+            color: #FFFFFF;
+        }
+    </style>

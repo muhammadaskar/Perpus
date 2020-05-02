@@ -10,7 +10,7 @@
                     </div>
                     <div class="row mb-5 pb-5 mt-0 pt-0">
                         <?php if (empty($buku)) : ?>
-                            <div class="col-md-12 mb-5 pb-5">
+                            <div class="col-md-12 mb-5 pb-5 empty" data-empty="tidak tersedia">
                                 <div class="alert alert-danger text-center" role="alert">
                                     Buku tidak tersedia
                                 </div>

@@ -16,7 +16,7 @@ class Admin extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Dashboard';
+        $data['judul'] = 'Daftar Buku';
         $data['buku'] = $this->BukuModel->getAllBuku();
         $this->load->view('templates/adminHeader', $data);
         $this->load->view('templates/adminSidebar');
@@ -40,7 +40,6 @@ class Admin extends CI_Controller
             $this->load->view('admin/tambahbuku');
             $this->load->view('templates/adminFooter');
         } else {
-
 
             $kode_buku = $this->input->post('kode_buku');
             $judul_buku = $this->input->post('judul_buku');
@@ -142,7 +141,6 @@ class Admin extends CI_Controller
                 'judul_buku' => $judul_buku,
                 'kategori' => $kategori,
                 'pengarang' => $pengarang,
-                'status' => 'dipinjam',
                 'tahun_terbit' => $tahun_terbit,
             ];
 
@@ -164,7 +162,7 @@ class Admin extends CI_Controller
 
     public function peminjam()
     {
-        $data['judul'] = 'Daftar Peminjam Buku';
+        $data['judul'] = 'Daftar Peminjam';
         $data['peminjam'] = $this->BukuModel->getPeminjam();
         $this->load->view('templates/adminHeader', $data);
         $this->load->view('templates/adminSidebar');
