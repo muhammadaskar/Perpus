@@ -13,6 +13,21 @@ class BukuModel extends CI_Model
         return $this->db->get('buku', 8)->result_array();
     }
 
+    public function getBukuLim($limit, $start, $keyword = null)
+    {
+        if ($keyword) {
+            $this->db->like('judul_buku', $keyword);
+            $this->db->or_like('kategori', $keyword);
+            $this->db->or_like('pengarang', $keyword);
+        }
+        return $this->db->get('buku', $limit, $start)->result_array();
+    }
+
+    public function countAllBooks()
+    {
+        return $this->db->get('buku')->num_rows();
+    }
+
     public function getBukuKategoriKomik()
     {
         return $this->db->get_where('buku', ['kategori' => 'komik'])->result_array();

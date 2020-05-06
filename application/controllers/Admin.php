@@ -8,6 +8,7 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->model('BukuModel');
         $this->load->library('form_validation');
+        $this->load->library('pagination');
 
         if (!$this->session->userdata('admin')) {
             redirect('auth/blocked');
@@ -17,7 +18,26 @@ class Admin extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Daftar Buku';
-        $data['buku'] = $this->BukuModel->getAllBuku();
+
+        if ($this->input->post('cari')) {
+            $data['keyword'] = $this->input->post('keyword');
+            $this->session->set_userdata('keyword', $data['keyword']);
+        } else {
+            $data['keyword'] = $this->session->userdata('keyword');
+        }
+
+        $this->db->like('judul_buku', $data['keyword']);
+        $this->db->or_like('kategori', $data['keyword']);
+        $this->db->or_like('pengarang', $data['keyword']);
+        $this->db->from('buku');
+
+        $config['total_rows'] = $this->db->count_all_results();
+        $config['per_page'] = 5;
+
+        $this->pagination->initialize($config);
+
+        $data['start'] = $this->uri->segment(3);
+        $data['buku'] = $this->BukuModel->getBukuLim($config['per_page'], $data['start'], $data['keyword']);
         $this->load->view('templates/adminHeader', $data);
         $this->load->view('templates/adminSidebar');
         $this->load->view('templates/adminTopbar');

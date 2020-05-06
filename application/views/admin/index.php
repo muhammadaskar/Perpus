@@ -5,7 +5,21 @@
     <h1 class="h3 mb-4 text-gray-800">Daftar Buku</h1>
     <div class="row">
         <div class="col-lg-11">
-            <a href="<?= base_url('admin/tambahBuku') ?>" class="btn btn-success mb-2">Tambahkan buku baru</a>
+            <div class="row">
+                <div class="col-lg-8">
+                    <a href="<?= base_url('admin/tambahBuku') ?>" class="btn btn-success mb-2">Tambahkan buku baru</a>
+                </div>
+                <div class="col-lg-4">
+                    <form action="<?= base_url('admin/index') ?>" method="POST" autocomplete="off" autofocus>
+                        <div class="input-group mb-3">
+                            <input type="text" name="keyword" class="form-control" placeholder="Cari buku">
+                            <div class="input-group-append">
+                                <input class="btn btn-primary" type="submit" name="cari" id="button-addon2" value="cari">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <?= $this->session->flashdata('message'); ?>
             <table class="table table-hover">
                 <thead>
@@ -20,10 +34,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1;
-                    foreach ($buku as $b) : ?>
+                    <?php if (empty($buku)) : ?>
+                        <div class="alert alert-danger">
+                            Buku Tidak Ada
+                        </div>
+                        <form action="<?= base_url('admin/index') ?>" method="POST">
+                            <input class="btn btn-secondary mb-2" type="submit" name="cari" id="button-addon2" value="kembali">
+                        </form>
+                    <?php endif; ?>
+                    <?php foreach ($buku as $b) : ?>
                         <tr>
-                            <th scope="row"><?= $i; ?></th>
+                            <th scope="row"><?= ++$start; ?></th>
                             <th><?= $b['kode_buku']; ?></th>
                             <th><?= $b['judul_buku']; ?></th>
                             <th><?= $b['kategori']; ?></th>
@@ -35,9 +56,10 @@
                             </td>
                         </tr>
                 </tbody>
-            <?php $i++;
-                    endforeach;  ?>
+            <?php endforeach;  ?>
             </table>
+
+            <?= $this->pagination->create_links(); ?>
         </div>
     </div>
 
