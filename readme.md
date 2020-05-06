@@ -35,3 +35,9 @@
 - user_id fk user(id)
 - tanggal_pinjam
 - tanggal_kembali
+
+## USER_TOKEN
+- id
+- email
+- token
+- date_created
