@@ -71,7 +71,7 @@ class Admin extends CI_Controller
 
             if ($uploadImage) {
                 $config['upload_path']          = './assets/img/buku/';
-                $config['allowed_types']        = 'gif|jpg|png';
+                $config['allowed_types']        = 'jpeg|jpg|png';
                 $config['max_size']             = '2048';
                 $this->load->library('upload', $config);
 
@@ -87,7 +87,10 @@ class Admin extends CI_Controller
                         'gambar_buku' => $new_image
                     ];
                 } else {
-                    echo $this->upload->display_errors();
+                    // echo $this->upload->display_errors();
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Gagal Melakukan upload</div>');
+                    redirect('admin/tambahbuku');
                 }
             } else {
                 $data = [
@@ -135,7 +138,7 @@ class Admin extends CI_Controller
 
             if ($uploadImage) {
                 $config['upload_path']          = './assets/img/buku/';
-                $config['allowed_types']        = 'gif|jpg|png';
+                $config['allowed_types']        = 'jpeg|jpg|png';
                 $config['max_size']             = '2048';
                 $this->load->library('upload', $config);
 
@@ -151,9 +154,10 @@ class Admin extends CI_Controller
                     $new_image = $this->upload->data('file_name');
                     $this->db->set('gambar_buku', $new_image);
                 } else {
-                    echo $this->upload->display_errors();
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-                    Gambar Wajib diedit</div>');
+                    // echo $this->upload->display_errors();
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Gagal melakukan upload</div>');
+                    redirect("admin/editbuku/$kode_buku");
                 }
             }
 
@@ -189,5 +193,46 @@ class Admin extends CI_Controller
         $this->load->view('templates/adminTopbar');
         $this->load->view('admin/peminjam', $data);
         $this->load->view('templates/adminFooter');
+    }
+
+    public function gantiPassword()
+    {
+        $data['judul'] = 'Ganti Password';
+        $data['admin'] = $this->db->get_where('admin', ['nama' => $this->session->userdata('admin')])->row_array();
+
+
+        $this->form_validation->set_rules('password-lama', 'Password Lama', 'required|trim');
+        $this->form_validation->set_rules('password-baru1', 'Password Baru', 'required|trim|min_length[3]|matches[password-baru2]');
+        $this->form_validation->set_rules('password-baru2', 'Konfirmasi Password Baru', 'required|trim|min_length[3]|matches[password-baru1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/adminHeader', $data);
+            $this->load->view('templates/adminSidebar');
+            $this->load->view('templates/adminTopbar');
+            $this->load->view('admin/ganti-password', $data);
+            $this->load->view('templates/adminFooter');
+        } else {
+            $passwordLama = $this->input->post('password-lama');
+            $passwordBaru = $this->input->post('password-baru1');
+            if (!password_verify($passwordLama, $data['admin']['password'])) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Password lama tidak sesuai</div>');
+                redirect('admin/gantiPassword');
+            } else {
+                if ($passwordBaru == $passwordLama) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Password baru tidak boleh sama dengan Password sebelumnya</div>');
+                    redirect('admin/gantiPassword');
+                } else {
+                    $passwordHash = password_hash($passwordBaru, PASSWORD_DEFAULT);
+                    $this->db->set('password', $passwordHash);
+                    $this->db->where('nama', $this->session->userdata('admin'));
+                    $this->db->update('admin');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                    Password Berhasil diganti</div>');
+                    redirect('admin/gantiPassword');
+                }
+            }
+        }
     }
 }

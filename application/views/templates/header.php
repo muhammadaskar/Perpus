@@ -36,10 +36,9 @@
 <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="">
-                <!-- <img src="{{asset('public/img/logo/Logo Landscape Transparent.png')}}" width="140" heigth="20"> -->
                 <div class="logo">
                     <a href="<?= base_url() ?>">
                         <img src="<?= base_url('assets/'); ?>img/logo.png" alt="">
@@ -58,13 +57,7 @@
                         <a class="nav-link ml-3" href="<?= base_url() ?>" style="color: #FFF;">Beranda <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link ml-3" href="<?= base_url('main/koleksi') ?>" style="color: #FFF;">Koleksi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-3" href="#" style="color: #FFF;">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-3" href="#" style="color: #FFF;">Tentang Kami</a>
+                        <a class="nav-link ml-3" href="<?= base_url('main/koleksi') ?>" style="color: #FFF;">Koleksi Saya</a>
                     </li>
 
                     <!-- Nav Item - User Information -->
@@ -74,11 +67,10 @@
                             $CI = get_instance();
                             if ($CI->session->userdata('user')) {
                                 echo $user['nama'];
-
                             ?>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item edit-profile" href="#">Edit Profile</a>
-                                    <!-- <a class="dropdown-item" href="#">Buku Yang Dipinjam</a> -->
+                                    <a class="dropdown-item" href="<?= base_url('main/editprofil') ?>">Edit Profile</a>
+                                    <a class="dropdown-item" href="<?= base_url('main/gantipassword') ?>">Ganti Password</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item keluar" href="<?= base_url('auth/logout') ?>">keluar</a>
                                 <?php } else {

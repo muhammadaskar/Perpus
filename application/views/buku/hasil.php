@@ -2,10 +2,18 @@
     <div class="single_slider  d-flex align-items-center slider_bg_1">
         <div class="container">
             <div class="popular_catagory_area">
-                <div class="container  mt-5 cari">
-                    <div class="row">
-                        <div class="col-sm-5">
-                            <p class="text-white">Hasil Pencarian : <?= $keyword ?></p>
+                <div class="container cari">
+                    <div class="row input-cari">
+                        <div class="col-lg-4 mx-auto d-block">
+                            <form action="<?= base_url('main/cari') ?>" method="POST" autocomplete="off" autofocus>
+                                <div class="input-group input-group-lg">
+                                    <input type="text" name="keyword" class="form-control" placeholder="Apa Yang anda cari?">
+                                    <div class="input-group-append">
+                                        <input class="btn btn-warning text-white" type="submit" name="cari" id="button-addon2" value="cari">
+                                    </div>
+                                </div>
+                                <h6 class="text-white ml-2 mt-2">Hasil Pencarian : <?= $keyword ?></h6>
+                            </form>
                         </div>
                     </div>
                     <div class="row mb-5 pb-5 mt-0 pt-0">
@@ -42,3 +50,24 @@
         </div>
     </div>
 </div>
+
+<style>
+    /* @media(max-width: 768px) {
+        .hasil {
+            margin-top: 100px;
+        }
+    } */
+
+    /* @media(max-width: 800px) {
+        .input-cari {
+            margin-top: 100%;
+        }
+    } */
+
+    @media (min-width: 1200px) {
+        .input-cari {
+            margin-top: 400px;
+            margin-bottom: 10px;
+        }
+    }
+</style>

@@ -13,6 +13,7 @@ class Main extends CI_Controller
 
         $this->load->model('BukuModel');
         $this->load->model('UserModel', 'User');
+        $this->load->library('form_validation');
         // is_logged_in(); // method ada di dir helpers
     }
 
@@ -114,5 +115,68 @@ class Main extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('buku/semuabuku', $data);
         $this->load->view('templates/footer');
+    }
+
+    public function editprofil()
+    {
+        $data['judul'] = 'Edit Profil';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->form_validation->set_rules('nama', 'Nama', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('user/edit-profil', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $nama = $this->input->post('nama');
+            $email = $this->input->post('email');
+
+            $this->db->set('nama', $nama);
+            $this->db->where('email', $email);
+            $this->db->update('user');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Profil Berhasil diubah</div>');
+            redirect('main/editprofil');
+        }
+    }
+
+    public function gantipassword()
+    {
+        $data['judul'] = 'Ganti Password';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $this->form_validation->set_rules('password-lama', 'Password Lama', 'required|trim');
+        $this->form_validation->set_rules('password-baru1', 'Password Baru', 'required|trim|min_length[3]|matches[password-baru2]');
+        $this->form_validation->set_rules('password-baru2', 'Konfirmasi Password Baru', 'required|trim|min_length[3]|matches[password-baru1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('user/ganti-password', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $passwordLama = $this->input->post('password-lama');
+            $passwordBaru = $this->input->post('password-baru1');
+
+            if (!password_verify($passwordLama, $data['user']['password'])) {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Password lama tidak sesuai</div>');
+                redirect('main/gantipassword');
+            } else {
+                if ($passwordBaru == $passwordLama) {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                        Password lama tidak boleh sama dengan password baru</div>');
+                    redirect('main/gantipassword');
+                } else {
+                    $passwordHash = password_hash($passwordBaru, PASSWORD_DEFAULT);
+                    $this->db->set('password', $passwordHash);
+                    $this->db->where('email', $data['user']['email']);
+                    $this->db->update('user');
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                        Password berhasil diubah</div>');
+                    redirect('main/gantipassword');
+                }
+            }
+        }
     }
 }

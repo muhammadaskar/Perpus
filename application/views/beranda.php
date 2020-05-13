@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h3 class="text-white text-center">Daftar Nama Anggota Kelompok : </h3>
+                        <h3 class="text-white text-center mt-5 pt-5">Daftar Nama Anggota Kelompok : </h3>
                     </div>
                 </div>
                 <hr class="bg-white">
@@ -26,48 +26,15 @@
                         <p class="text-white">185150600111006</p>
                     </div>
                 </div>
-                <div class="row align-items-center justify-content-center">
-                    <div class="col-xl-10">
-                        <div class="slider_text text-center justify-content-center">
-                            <p"> SELAMAT DATANG DI :</p>
-                                <h3>LIBMAX</h3>
-                                <center>
-                                    <div class="search_form" style="width: 520px;">
-                                        <form action="<?= base_url('main/cari') ?>" style="width: 520px;" method="POST" autocomplete="off">
-                                            <div class="row align-items-center" style="width: 770px;">
-                                                <div class="col-xl-5 col-md-4">
-                                                    <div class="input_field">
-                                                        <input name="keyword" type="text" placeholder="Apa yang kamu cari?">
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-xl-3 col-md-4">
-                                                    <div class="button_search">
-                                                        <input class="boxed-btn2" type="submit" name="cari" value="cari">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </center>
-                                <div class="quality">
-                                    <ul>
-                                        <li>
-                                            <button>NOVEL</button>
-                                        </li>
-                                        <li>
-                                            <button>KOMIK</button>
-                                        </li>
-                                        <li>
-                                            <button>KAMUS</button>
-                                        </li>
-                                        <li>
-                                            <button>SAINS</button>
-                                        </li>
-                                    </ul>
-                                </div>
+                <div class="col-lg-4 mx-auto d-block">
+                    <form action="<?= base_url('main/cari') ?>" method="POST" autocomplete="off" autofocus>
+                        <div class="input-group input-group-lg mb-5">
+                            <input type="text" name="keyword" class="form-control" placeholder="Apa Yang anda cari?">
+                            <div class="input-group-append">
+                                <input class="btn btn-warning text-white" type="submit" name="cari" id="button-addon2" value="cari">
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -84,6 +51,11 @@
                             Daftar Buku
                         </h3>
                     </div>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-md-12">
+                    <a href="<?= base_url('main/semua') ?>" class="btn btn-warning text-white">Lihat Semua Buku</a>
                 </div>
             </div>
             <div class="row">
@@ -105,11 +77,6 @@
                         </div>
                     </div>
                 <?php endforeach; ?>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <a href="<?= base_url('main/semua') ?>" class="btn btn-warning text-white">Lihat Semua Buku</a>
-                </div>
             </div>
         </div>
     </div>

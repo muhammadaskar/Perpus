@@ -1,21 +1,14 @@
 <div class=" slider_area">
     <div class="single_slider  d-flex align-items-center slider_bg_1">
         <div class="container">
-
-            <!-- <div class="row">
-                <div class="col-lg-6 mt-1 mb-2">
-                    <a href="<?= base_url('main') ?>"><i class="fas fa-4x fa-arrow-alt-circle-left"></i></a>
-                </div>
-            </div> -->
-
-            <div class="row">
+            <div class="row detail">
                 <div class="col-lg-6">
                     <h2><?= $buku['judul_buku'] ?></h2>
                     <img src="<?= base_url('assets/img/buku/') . $buku['gambar_buku'] ?>" class="card-img mb-5 pb-5 " style="width: 60%; max-height:400px">
                 </div>
                 <div class="col-lg-4">
                     <form method="POST" action="<?= base_url('main/pinjam') ?>">
-                        <div class="form-group">
+                        <div class="form-group form">
                             <label for="kode_buku">Kode Buku</label>
                             <input type="text" name="kode_buku" class="form-control" id="kode_buku" value="<?= $buku['kode_buku'] ?>" readonly>
                         </div>
@@ -40,8 +33,8 @@
                         <?php
                         } else { ?>
                             <div class="form-group">
-                                <button type="button" class="btn btn-danger">Tidak Tersedia</button>
-                                <button type="button" class="btn btn-info" onclick="Swal.fire('Upppps','Buku Sedang Dipinjam','warning')">Pinjam</button>
+                                <div class="btn btn-danger">Tidak Tersedia</div>
+                                <!-- <button type="button" class="btn btn-info" onclick="Swal.fire('Upppps','Buku Sedang Dipinjam','warning')">Pinjam</button> -->
                             </div>
                         <?php } ?>
                     </form>
@@ -59,5 +52,25 @@
         .form-group,
         h2 {
             color: #FFFFFF;
+        }
+
+        @media(max-width: 768px) {
+            .detail {
+                margin-top: 100px;
+            }
+
+            .detail h2 {
+                text-align: center;
+            }
+
+            .detail img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .detail .form {
+                margin-top: 0;
+            }
         }
     </style>

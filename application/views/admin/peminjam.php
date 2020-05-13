@@ -17,7 +17,6 @@
                         <th scope="col">Email Peminjam</th>
                         <th scope="col">Tanggal Pinjam</th>
                         <th scope="col">Tanggal Kembali</th>
-                        <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,9 +31,6 @@
                             <th><?= $p['email']; ?></th>
                             <th><?= $p['tanggal_pinjam']; ?></th>
                             <th><?= $p['tanggal_kembali']; ?></th>
-                            <td>
-                                <a href="<?= base_url('admin/kirimemail/') . $p['kode_buku'] ?>" class="badge badge-success kirim-email" onclick="myFunction()">kirim email</a>
-                            </td>
                         </tr>
                 </tbody>
             <?php $i++;

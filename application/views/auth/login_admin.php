@@ -37,4 +37,10 @@
 
             color: #FFFFFF;
         }
+
+        @media(max-width: 768px) {
+            .card {
+                margin-top: 100px;
+            }
+        }
     </style>

@@ -87,3 +87,29 @@ $('.daftar-buku').on('click', function () {
 	$(".daftar-buku").addClass("active")
 	$(".peminjam").removeClass("active")
 })
+
+function validasiFile() {
+	var inputFile = document.getElementById('image');
+	var pathFile = inputFile.value;
+	var ekstensiOk = /(\.jpg|\.jpeg|\.png)$/i;
+	if (!ekstensiOk.exec(pathFile)) {
+		Swal.fire(
+			'Uppps',
+			'Ektenssi tidak sesuai, silahkan upload file dengan ekstensi png, jpg, jpeg',
+			'error'
+		)
+		inputFile.value = '';
+		return false;
+	} else {
+		//Pratinjau gambar
+		if (inputFile.files && inputFile.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				document.getElementById('pratinjauGambar').innerHTML = '<img src="' + e.target.result + '" class="img-thumbnail mt-1" style="width: 200px"/>';
+			};
+			reader.readAsDataURL(inputFile.files[0]);
+		}
+	}
+}
+
+const flash = document.getElementById('flash')

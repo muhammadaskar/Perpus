@@ -33,3 +33,36 @@
 </head>
 
 <body style="background-image: url('<?= base_url('assets/img/banner/banner.jpg') ?>');">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="">
+                <div class="logo">
+                    <a href="<?= base_url() ?>">
+                        <img src="<?= base_url('assets/'); ?>img/logo.png" alt="">
+                    </a>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link ml-3" href="<?= base_url() ?>" style="color: #FFF;">Beranda <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-3" href="<?= base_url('auth/login_admin') ?>" style="color: #FFF;">Admin <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link ml-3" href="<?= base_url('auth/') ?>" style="color: #FFF;">Pengguna<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAVBAR -->

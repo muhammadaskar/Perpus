@@ -39,6 +39,46 @@
 <script src="<?= base_url('assets/js/sweetalert2.all.min.js') ?>"></script>
 <script src="<?= base_url('assets/'); ?>js/myscript.js"></script>
 
+<script>
+    function validasiFile() {
+        var inputFile = document.getElementById('image');
+        var pathFile = inputFile.value;
+        var ekstensiOk = /(\.jpg|\.jpeg|\.png)$/i;
+        if (!ekstensiOk.exec(pathFile)) {
+            Swal.fire(
+                'Uppps',
+                'Ektensi file tidak sesuai, silahkan upload file dengan ekstensi png, jpg, jpeg',
+                'error'
+            )
+            inputFile.value = '';
+            return false;
+        } else if (inputFile.files.length > 0) {
+
+            for (const i = 0; i <= inputFile.files.length - 1; i++) {
+                const fsize = inputFile.files.item(i).size;
+                const file = Math.round((fsize / 1024));
+                // The size of the file. 
+                if (file > 2048) {
+                    Swal.fire(
+                        'Uppps',
+                        'Ukuran file telalu besar',
+                        'error'
+                    )
+                }
+            }
+        } else {
+            //Pratinjau gambar
+            if (inputFile.files && inputFile.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('pratinjauGambar').innerHTML = '<img src="' + e.target.result + '" class="img-thumbnail mt-1" style="width: 200px"/>';
+                };
+                reader.readAsDataURL(inputFile.files[0]);
+            }
+        }
+    }
+</script>
+
 </body>
 
 </html>

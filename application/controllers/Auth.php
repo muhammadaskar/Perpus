@@ -165,9 +165,10 @@ class Auth extends CI_Controller
         $this->email->to($this->input->post('email'));
         if ($type == 'verify') {
             $this->email->subject('Aktivasi Akun');
-            $this->email->message('Click this link to verify account : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urldecode($token) . '">Acivate</a>');
-        } else {
-            // coming soon forgot password
+            $this->email->message('Klik link untuk melakukan aktivasi akun : <a class="btn btn-primary" href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Aktivasi</a>');
+        } else if ($type = 'forgot') {
+            $this->email->subject('Atur Ulang Password');
+            $this->email->message('Klik link untuk melakukan atur ulang password  : <a class="btn btn-primary" href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Atur ulang password</a>');
         }
 
         if ($this->email->send()) {
@@ -214,6 +215,111 @@ class Auth extends CI_Controller
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             Aktivasi Akun Gagal, Email Salah!</div>');
+            redirect('auth');
+        }
+    }
+
+    public function lupapassword()
+    {
+        $data['judul'] = 'Lupa Password';
+
+        $this->form_validation->set_rules('email', 'Email', 'trim|required');
+
+        if ($this->form_validation->run() == false) {
+            $this->_templates('lupa-password', $data);
+        } else {
+            $email = $this->input->post('email');
+            $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
+
+            if ($user) {
+
+                $token = base64_encode(random_bytes(32));
+                $user_token = [
+                    'email' => $email,
+                    'token' => $token,
+                    'date_created' => time()
+                ];
+
+                $this->db->insert('user_token', $user_token);
+                $this->_sendEmail($token, 'forgot');
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Silahkan cek email anda untuk melakukan atur password</div>');
+                redirect('auth/lupapassword');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Email belum terdaftar atau belum aktif!</div>');
+                redirect('auth/lupapassword');
+            }
+        }
+    }
+
+    public function resetpassword()
+    {
+        $email = $this->input->get('email');
+        $token = $this->input->get('token');
+
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+        if ($user) {
+            $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+
+            if ($user_token) {
+                if (time() - $user_token['date_created'] < (60 * 60 * 24)) {
+                    $this->session->set_userdata('reset_pass', $email);
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                    Silahkan Masukkan Password Baru</div>');
+                    redirect('auth/gantipassword');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                    Reset Password Gagal, Waktu telah habis!</div>');
+                    redirect('auth');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+                Reset Password Gagal, Token Salah!</div>');
+                redirect('auth');
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Reset Password Gagal, Email Salah!</div>');
+            redirect('auth');
+        }
+    }
+
+    public function gantipassword()
+    {
+
+        if (!$this->session->userdata('reset_pass')) {
+            redirect('auth');
+        }
+
+        $data['judul'] = 'Ganti Password';
+
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+            'matches' => 'Password tidak sesuai',
+            'min_length' => 'Password terlalu pendek'
+        ]);
+        $this->form_validation->set_rules('password2', 'Ulang Password', 'required|trim|min_length[3]|matches[password1]', [
+            'matches' => 'Password tidak sesuai',
+            'min_length' => 'Password terlalu pendek'
+        ]);
+        if ($this->form_validation->run() == false) {
+            $this->_templates('ganti-password', $data);
+        } else {
+            $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
+            $email = $this->session->userdata('reset_pass');
+
+            $this->db->set('password', $password);
+            $this->db->where('email', $email);
+            $this->db->update('user');
+
+            $this->db->where('email', $email);
+            $this->db->delete('user_token');
+
+            $this->session->unset_userdata('reset_pass');
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Password Berhasil diubah, Silahkan login!</div>');
             redirect('auth');
         }
     }

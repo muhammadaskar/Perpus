@@ -1,7 +1,7 @@
 <div class="bg-dark text-white">
     <div class="single_slider  d-flex align-items-center">
         <div class="container mt-5 pt-5 mb-5 pb-5">
-            <table class="table table-secondary">
+            <table class="table table-secondary table-responsive">
                 <thead>
                     <tr>
                         <th scope="col">No</th>

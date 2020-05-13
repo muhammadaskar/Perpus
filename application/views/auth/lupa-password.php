@@ -3,26 +3,21 @@
         <div class="container mb-5 pb-5">
             <div class="row align-items-center justify-content-center">
                 <div class="card" style="width: 25rem;">
-                    <h2 class="card-header mx-auto">Login Pengguna</h2>
+                    <h2 class="card-header mx-auto">Lupa Password</h2>
                     <div class="container">
                         <?= $this->session->flashdata('message'); ?>
                     </div>
                     <div class="card-body">
-                        <form action="<?= base_url('auth') ?>" method="POST">
+                        <form action="<?= base_url('auth/lupapassword') ?>" method="POST">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Alamat Email</label>
                                 <input name="email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Password</label>
-                                <input name="password" type="password" class="form-control" id="exampleInputPassword1">
-                            </div>
-                            <button type="submit" class="btn btn-primary mx-auto d-block">masuk</button>
+                            <button type="submit" class="btn btn-primary mx-auto d-block">atur ulang password</button>
                         </form>
                     </div>
-                    <a href="<?= base_url('auth/register'); ?>" class="badge badge-success mx-auto d-block mb-3">daftar disini</a>
-                    <a href="<?= base_url('auth/lupapassword'); ?>" class="badge badge-danger mx-auto d-block mb-3">lupa password</a>
+                    <a href="<?= base_url('auth'); ?>" class="badge badge-success mx-auto d-block mb-3">kembali ke login</a>
                 </div>
             </div>
         </div>

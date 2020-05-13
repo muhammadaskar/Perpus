@@ -6,6 +6,11 @@
 
     <div class="row">
         <div class="col-lg-10">
+            <div class="row">
+                <div class="col-lg-8">
+                    <?= $this->session->flashdata('message'); ?>
+                </div>
+            </div>
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group row">
                     <label for="kodeBuku" class="col-sm-2 col-form-label">Kode Buku</label>
@@ -61,8 +66,14 @@
                             </div>
                             <div class="col-sm-9">
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="image" name="image">
-                                    <label class="custom-file-label" for="customFile">Pilih File</label>
+                                    <input type="file" class="custom-file-input" id="image" name="image" onchange="return validasiFile()">
+                                    <label class="custom-file-label" for="customFile">Pilih File(jpg, png)</label>
+                                    <div id="pratinjauGambar"></div>
+                                    <div class="row">
+                                        <div class="col-lg-8 mt-2 mb-2">
+                                            <?= $this->session->flashdata('message'); ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

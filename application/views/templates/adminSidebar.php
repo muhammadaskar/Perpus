@@ -25,6 +25,14 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Daftar Peminjam</span></a>
     </li>
+
+    <!-- Nav Item - daftar peminjam -->
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/gantiPassword') ?>">
+            <i class="fas fa-fw fa-key"></i>
+            <span>Ganti Password</span></a>
+    </li>
+
     <!-- Nav Item - keluar -->
     <li class="nav-item">
         <a class="nav-link keluar" href="<?= base_url('auth/logoutAdmin') ?>">
