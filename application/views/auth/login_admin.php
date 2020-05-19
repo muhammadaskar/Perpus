@@ -18,10 +18,10 @@
                                 <label for="exampleInputPassword1">Password</label>
                                 <input name="password" type="password" class="form-control" id="exampleInputPassword1">
                             </div>
-                            <button type="submit" class="btn btn-primary mx-auto d-block">masuk</button>
+                            <button type="submit" class="btn btn-primary mx-auto d-block" style="width: 20rem;">masuk</button>
                         </form>
                     </div>
-                    <a href="<?= base_url('auth'); ?>" class="badge badge-info mx-auto d-block mb-3">login student</a>
+                    <a href="<?= base_url('auth'); ?>" class="btn btn-info mx-auto d-block mb-3" style="width: 20rem;">login student</a>
                 </div>
             </div>
         </div>

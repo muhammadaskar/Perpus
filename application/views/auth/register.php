@@ -26,10 +26,10 @@
                                 <input name="password2" type="password" class="form-control" id="password2" placeholder="Konfirmasi Password">
                                 <?= form_error('password2', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <button type="submit" class="btn btn-primary mx-auto d-block">Simpan</button>
+                            <button type="submit" class="btn btn-primary mx-auto d-block" style="width: 20rem;">Daftar</button>
                         </form>
                     </div>
-                    <a href="<?= base_url('auth'); ?>" class="badge badge-success mx-auto d-block mb-3">login disini</a>
+                    <a href="<?= base_url('auth'); ?>" class="btn btn-success mx-auto d-block mb-3" style="width: 20rem;">login disini</a>
                 </div>
             </div>
         </div>

@@ -17,12 +17,17 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Password</label>
                                 <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+                                <div class="lupa">
+                                    <a href="<?= base_url('auth/lupapassword'); ?>">
+                                        <p class="ml-2">Lupa Password ?</p>
+                                    </a>
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mx-auto d-block">masuk</button>
+                            <button type="submit" class="btn btn-primary mx-auto d-block" style="width: 20rem;">masuk</button>
                         </form>
                     </div>
-                    <a href="<?= base_url('auth/register'); ?>" class="badge badge-success mx-auto d-block mb-3">daftar disini</a>
-                    <a href="<?= base_url('auth/lupapassword'); ?>" class="badge badge-danger mx-auto d-block mb-3">lupa password</a>
+                    <a href="<?= base_url('auth/register'); ?>" class="btn btn-success mx-auto d-block mb-3" style="width: 20rem;">daftar disini</a>
+                    <!-- <a href="<?= base_url('auth/lupapassword'); ?>" class="badge badge-danger mx-auto d-block mb-3" style="width: 20rem;">lupa password</a> -->
                 </div>
             </div>
         </div>
@@ -35,8 +40,20 @@
         }
 
         .card h2 {
-
             color: #FFFFFF;
+        }
+
+        .lupa p {
+            font-size: 15px;
+            color: crimson;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        p:hover {
+            color: red;
         }
 
         @media(max-width: 768px) {

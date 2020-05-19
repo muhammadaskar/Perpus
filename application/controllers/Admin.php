@@ -7,6 +7,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         $this->load->model('BukuModel');
+        $this->load->model('AdminModel');
         $this->load->library('form_validation');
         $this->load->library('pagination');
 
@@ -234,5 +235,72 @@ class Admin extends CI_Controller
                 }
             }
         }
+    }
+
+    public function daftaradmin()
+    {
+        $data['judul'] = 'Daftar Admin';
+        $data['admin'] = $this->AdminModel->getAllAdmin();
+
+        $this->load->view('templates/adminHeader', $data);
+        $this->load->view('templates/adminSidebar');
+        $this->load->view('templates/adminTopbar');
+        $this->load->view('admin/daftar-admin', $data);
+        $this->load->view('templates/adminFooter');
+    }
+
+    public function tambahadmin()
+    {
+
+        $data['judul'] = 'Tambah Admin';
+
+        $this->form_validation->set_rules('nik', 'NIK', 'required|trim|is_unique[admin.nik]', [
+            'is_unique' => 'NIK telah tedaftar'
+        ]);
+        $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[admin.email]', [
+            'is_unique' => 'Email telah tedaftar'
+        ]);
+        $this->form_validation->set_rules('no_hp', 'No HP', 'required|trim|min_length[11]|max_length[13]');
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required');
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', [
+            'matches' => 'Password tidak sesuai',
+            'min_length' => 'Password terlalu pendek'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/adminHeader', $data);
+            $this->load->view('templates/adminSidebar');
+            $this->load->view('templates/adminTopbar');
+            $this->load->view('admin/tambah-admin', $data);
+            $this->load->view('templates/adminFooter');
+        } else {
+            $data = [
+                'nik' => $this->input->post('nik'),
+                'nama' => $this->input->post('nama'),
+                'email' => $this->input->post('email'),
+                'no_hp' => $this->input->post('no_hp'),
+                'alamat' => $this->input->post('alamat'),
+                'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT)
+            ];
+
+            $this->AdminModel->tambahAdmin($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Berhasil ditambahkan</div>');
+            redirect('admin/daftaradmin');
+        }
+    }
+
+    public function daftarpengguna()
+    {
+        $data['judul'] = 'Daftar Pengguna';
+        $data['pengguna'] = $this->AdminModel->getAllUser();
+
+        $this->load->view('templates/adminHeader', $data);
+        $this->load->view('templates/adminSidebar');
+        $this->load->view('templates/adminTopbar');
+        $this->load->view('admin/daftar-pengguna', $data);
+        $this->load->view('templates/adminFooter');
     }
 }
