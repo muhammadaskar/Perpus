@@ -12,7 +12,6 @@
                         <th scope="col">#</th>
                         <th scope="col">Kode Buku</th>
                         <th scope="col">Judul Buku</th>
-                        <th scope="col">Pengarang</th>
                         <th scope="col">Nama Peminjam</th>
                         <th scope="col">Email Peminjam</th>
                         <th scope="col">Tanggal Pinjam</th>
@@ -26,11 +25,10 @@
                             <th scope="row"><?= $i; ?></th>
                             <th><?= $p['kode_buku']; ?></th>
                             <th><?= $p['judul_buku']; ?></th>
-                            <th><?= $p['pengarang']; ?></th>
                             <th><?= $p['nama']; ?></th>
                             <th><?= $p['email']; ?></th>
-                            <th><?= $p['tanggal_pinjam']; ?></th>
-                            <th><?= $p['tanggal_kembali']; ?></th>
+                            <th><?= date('d m Y', strtotime($p['tanggal_pinjam'])); ?></th>
+                            <th><?= date('d m Y', strtotime($p['tanggal_kembali'])); ?></th>
                         </tr>
                 </tbody>
             <?php $i++;

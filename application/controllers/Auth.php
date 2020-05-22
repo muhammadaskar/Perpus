@@ -14,7 +14,9 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        // is_logged_in();
         $data['judul'] = 'Login';
+        $data['halaman'] = 'Login';
 
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -28,7 +30,8 @@ class Auth extends CI_Controller
 
     public function login_admin()
     {
-        $data['judul'] = 'Login';
+        $data['judul'] = 'Login Admin';
+        $data['halaman'] = 'Admin';
 
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -151,7 +154,7 @@ class Auth extends CI_Controller
             'protocol'  => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
             'smtp_user' => 'perpus.pti@gmail.com',
-            'smtp_pass' => '',
+            'smtp_pass' => '*****',
             'smtp_port' => 465,
             'mailtype'  => 'html',
             'charset'   => 'utf-8',
@@ -222,6 +225,7 @@ class Auth extends CI_Controller
     public function lupapassword()
     {
         $data['judul'] = 'Lupa Password';
+        $data['halaman'] = 'Lupa Password';
 
         $this->form_validation->set_rules('email', 'Email', 'trim|required');
 

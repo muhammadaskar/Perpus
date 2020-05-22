@@ -41,20 +41,6 @@ $('.tombol-kembalikan').on('click', function (e) {
 	})
 });
 
-$('.kirim-email').on('click', function (e) {
-	e.preventDefault();
-	Swal.fire({
-		title: 'Coming Soon'
-	})
-})
-
-$('.edit-profile').on('click', function (e) {
-	e.preventDefault();
-	Swal.fire({
-		title: 'Coming Soon'
-	})
-})
-
 // konfirmasi keluar
 $('.keluar').on('click', function (e) {
 	e.preventDefault()
@@ -111,5 +97,3 @@ function validasiFile() {
 		}
 	}
 }
-
-const flash = document.getElementById('flash')

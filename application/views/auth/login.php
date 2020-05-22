@@ -19,7 +19,7 @@
                                 <input name="password" type="password" class="form-control" id="exampleInputPassword1">
                                 <div class="lupa">
                                     <a href="<?= base_url('auth/lupapassword'); ?>">
-                                        <p class="ml-2">Lupa Password ?</p>
+                                        <p class="ml-2" style="float: right;">Lupa Password ?</p>
                                     </a>
                                 </div>
                             </div>

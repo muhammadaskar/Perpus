@@ -21,7 +21,6 @@
                             <button type="submit" class="btn btn-primary mx-auto d-block" style="width: 20rem;">masuk</button>
                         </form>
                     </div>
-                    <a href="<?= base_url('auth'); ?>" class="btn btn-info mx-auto d-block mb-3" style="width: 20rem;">login student</a>
                 </div>
             </div>
         </div>

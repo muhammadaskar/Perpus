@@ -33,6 +33,20 @@
             <span>Ganti Password</span></a>
     </li>
 
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/daftaradmin') ?>">
+            <i class="fas fa-fw fa-user-shield"></i>
+            <span>Daftar Admin</span></a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/daftarpengguna') ?>">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Daftar Pengguna</span></a>
+    </li>
+
+
     <!-- Nav Item - keluar -->
     <li class="nav-item">
         <a class="nav-link keluar" href="<?= base_url('auth/logoutAdmin') ?>">

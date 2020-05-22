@@ -55,12 +55,15 @@
                     <li class="nav-item">
                         <a class="nav-link ml-3" href="<?= base_url() ?>" style="color: #FFF;">Beranda <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-3" href="<?= base_url('auth/login_admin') ?>" style="color: #FFF;">Admin <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link ml-3" href="<?= base_url('auth/') ?>" style="color: #FFF;">Pengguna<span class="sr-only">(current)</span></a>
-                    </li>
+                    <?php if ($halaman != 'Admin') : ?>
+                        <li class="nav-item">
+                            <a class="nav-link ml-3" href="<?= base_url('auth/login_admin') ?>" style="color: #FFF;">Admin <span class="sr-only">(current)</span></a>
+                        </li>
+                    <?php elseif ($halaman != 'Login') : ?>
+                        <li class="nav-item">
+                            <a class="nav-link ml-3" href="<?= base_url('auth/') ?>" style="color: #FFF;">Pengguna<span class="sr-only">(current)</span></a>
+                        </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
